@@ -1,0 +1,17 @@
+{% extends 'app_main/base.html' %}
+{% block title %}Crear Usuario{% endblock title %}
+
+{% block content %}
+<h1>Crear Usuario</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    {{ form.as_div }}
+    
+    {% for error in form.name.errors%}
+        <div class="error">{{ error }}</div>
+    {% endfor %}
+
+    <button type="submit">Crear</button>
+</form>
+{% endblock content %}

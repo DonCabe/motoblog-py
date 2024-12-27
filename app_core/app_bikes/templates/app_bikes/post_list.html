@@ -1,0 +1,24 @@
+{% extends 'app_main/base.html' %}
+
+{% block content %}
+<h1>Publicaciones de motocicletas</h1>
+{% for post in posts %}
+    <div class="post">
+        <h2>{{ post.titulo }}</h2>
+        <img src="{{ post.image.url }}" alt="{{ post.title }}">
+        <p>{{ post.description }}</p>
+        <p>Likes: {{ post.total_likes }}</p>
+        <form action="{% url 'like_post' post.id %}" method="POST">
+            {% csrf_token %}
+            <button type="submit">
+                {% if user in post.likes.all %}
+                    Quitar like
+                {% else %}
+                    Me gusta
+                {% endif %}
+            </button>
+        </form>
+        <a href="{% url 'contacto' %}">Contactar</a>
+    </div>
+{% endfor %}
+{% endblock %}

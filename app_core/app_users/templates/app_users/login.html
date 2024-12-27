@@ -1,0 +1,15 @@
+{% extends 'app_main/base.html' %}
+
+{% block title %}Iniciar Sesión{% endblock title %}
+
+{% block content %}
+<div class="form-container">
+    <h1>Inicia Sesión</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Ingresar</button>
+    </form>
+    <p>¿No tienes cuenta? <a href="{% url 'app_users:user_create' %}">Regístrate</a></p>
+</div>
+{% endblock content %}

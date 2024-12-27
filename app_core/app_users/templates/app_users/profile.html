@@ -1,0 +1,22 @@
+{% extends 'app_main/base.html' %}
+
+{% block title %}Perfil{% endblock title %}
+
+{% block content %}
+<div class="profile-info">
+    <h1>Perfil de {{ user.username }}</h1>
+    {% if profile.avatar %}
+        <img src="{{ profile.avatar.url }}" alt="Avatar" width="150">
+    {% else %}
+        <p>No hay avatar disponible.</p>
+    {% endif %}
+    <p><strong>Nombre:</strong> {{ user.first_name }}</p>
+    <p><strong>Apellido:</strong> {{ user.last_name }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Biografía:</strong> {{ profile.biography }}</p>
+    <p><strong>Cumpleaños:</strong> {{ profile.birthday }}</p>
+
+    <a href="{% url 'app_users:user_edit' request.user.pk %}">Editar Perfil</a>
+    <a href="{% url 'app_users:password_change' %}" class="button">Cambiar Contraseña</a>
+</div>
+{% endblock content %}

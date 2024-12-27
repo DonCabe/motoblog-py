@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Tienda Motocicletas{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/">Inicio</a>
+            <a href="/about/">Acerca de</a>
+            <a href="/login/">Iniciar sesión</a>
+            <a href="{% url 'app_users:profile' %}">{{ user.username }} <img src="{{ user.avatar.user_avt.url }}" alt=""></a>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; MotoShop 2024</p>
+    </footer>
+</body>
+</html>
